@@ -14,6 +14,7 @@
 		C80F65DB1ADE156C00277D77 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80F65D91ADE156C00277D77 /* MainMenu.xib */; };
 		C80F65E71ADE156C00277D77 /* PocketCastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F65E61ADE156C00277D77 /* PocketCastTests.swift */; };
 		C80F65F81ADE2BEE00277D77 /* MyApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F65F71ADE2BEE00277D77 /* MyApplication.swift */; };
+		CB54F1C51FE1A6A4006F6193 /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = CB54F1C41FE1A6A4006F6193 /* styles.css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		C80F65E51ADE156C00277D77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C80F65E61ADE156C00277D77 /* PocketCastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketCastTests.swift; sourceTree = "<group>"; };
 		C80F65F71ADE2BEE00277D77 /* MyApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyApplication.swift; path = PocketCast/MyApplication.swift; sourceTree = "<group>"; };
+		CB54F1C41FE1A6A4006F6193 /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		C80F65D31ADE156C00277D77 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CB54F1C41FE1A6A4006F6193 /* styles.css */,
 				C80F65D41ADE156C00277D77 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -189,7 +192,7 @@
 				TargetAttributes = {
 					C80F65CF1ADE156C00277D77 = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = UDGLB23X37;
+						DevelopmentTeam = W8K3X4JZU5;
 						LastSwiftMigration = 0810;
 					};
 					C80F65DF1ADE156C00277D77 = {
@@ -223,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB54F1C51FE1A6A4006F6193 /* styles.css in Resources */,
 				C80F65D81ADE156C00277D77 /* Images.xcassets in Resources */,
 				C80F65DB1ADE156C00277D77 /* MainMenu.xib in Resources */,
 			);
@@ -373,10 +377,10 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = UDGLB23X37;
+				DEVELOPMENT_TEAM = W8K3X4JZU5;
 				INFOPLIST_FILE = PocketCast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mortenjust.PocketCasts;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixon506e.PocketCasts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PocketCast/PocketCast-Bridging-Header.h";
@@ -393,10 +397,10 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = UDGLB23X37;
+				DEVELOPMENT_TEAM = W8K3X4JZU5;
 				INFOPLIST_FILE = PocketCast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mortenjust.PocketCasts;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixon506e.PocketCasts;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PocketCast/PocketCast-Bridging-Header.h";
