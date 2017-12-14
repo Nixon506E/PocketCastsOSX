@@ -14,6 +14,7 @@
 		C80F65DB1ADE156C00277D77 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80F65D91ADE156C00277D77 /* MainMenu.xib */; };
 		C80F65E71ADE156C00277D77 /* PocketCastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F65E61ADE156C00277D77 /* PocketCastTests.swift */; };
 		C80F65F81ADE2BEE00277D77 /* MyApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80F65F71ADE2BEE00277D77 /* MyApplication.swift */; };
+		CB1169821FE2FC210033B4E1 /* styles_tint.css in Resources */ = {isa = PBXBuildFile; fileRef = CB1169811FE2FC210033B4E1 /* styles_tint.css */; };
 		CB54F1C51FE1A6A4006F6193 /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = CB54F1C41FE1A6A4006F6193 /* styles.css */; };
 /* End PBXBuildFile section */
 
@@ -33,7 +34,7 @@
 		A441E3AD1B4FF0BE008DBC37 /* NSObject+SPInvocationGrabbing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SPInvocationGrabbing.m"; sourceTree = "<group>"; };
 		A441E3AE1B4FF0BE008DBC37 /* SPMediaKeyTap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPMediaKeyTap.h; sourceTree = "<group>"; };
 		A441E3AF1B4FF0BE008DBC37 /* SPMediaKeyTap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPMediaKeyTap.m; sourceTree = "<group>"; };
-		C80F65D01ADE156C00277D77 /* PocketCasts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PocketCasts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C80F65D01ADE156C00277D77 /* Pocket Casts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pocket Casts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C80F65D41ADE156C00277D77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C80F65D51ADE156C00277D77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C80F65D71ADE156C00277D77 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -42,6 +43,7 @@
 		C80F65E51ADE156C00277D77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C80F65E61ADE156C00277D77 /* PocketCastTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PocketCastTests.swift; sourceTree = "<group>"; };
 		C80F65F71ADE2BEE00277D77 /* MyApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyApplication.swift; path = PocketCast/MyApplication.swift; sourceTree = "<group>"; };
+		CB1169811FE2FC210033B4E1 /* styles_tint.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles_tint.css; sourceTree = "<group>"; };
 		CB54F1C41FE1A6A4006F6193 /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,7 +99,7 @@
 		C80F65D11ADE156C00277D77 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C80F65D01ADE156C00277D77 /* PocketCasts.app */,
+				C80F65D01ADE156C00277D77 /* Pocket Casts.app */,
 				C80F65E01ADE156C00277D77 /* PocketCastTests.xctest */,
 			);
 			name = Products;
@@ -118,6 +120,7 @@
 		C80F65D31ADE156C00277D77 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CB1169811FE2FC210033B4E1 /* styles_tint.css */,
 				CB54F1C41FE1A6A4006F6193 /* styles.css */,
 				C80F65D41ADE156C00277D77 /* Info.plist */,
 			);
@@ -144,9 +147,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C80F65CF1ADE156C00277D77 /* PocketCasts */ = {
+		C80F65CF1ADE156C00277D77 /* Pocket Casts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C80F65EA1ADE156C00277D77 /* Build configuration list for PBXNativeTarget "PocketCasts" */;
+			buildConfigurationList = C80F65EA1ADE156C00277D77 /* Build configuration list for PBXNativeTarget "Pocket Casts" */;
 			buildPhases = (
 				C80F65CC1ADE156C00277D77 /* Sources */,
 				C80F65CD1ADE156C00277D77 /* Frameworks */,
@@ -156,9 +159,9 @@
 			);
 			dependencies = (
 			);
-			name = PocketCasts;
+			name = "Pocket Casts";
 			productName = PocketCast;
-			productReference = C80F65D01ADE156C00277D77 /* PocketCasts.app */;
+			productReference = C80F65D01ADE156C00277D77 /* Pocket Casts.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C80F65DF1ADE156C00277D77 /* PocketCastTests */ = {
@@ -215,7 +218,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C80F65CF1ADE156C00277D77 /* PocketCasts */,
+				C80F65CF1ADE156C00277D77 /* Pocket Casts */,
 				C80F65DF1ADE156C00277D77 /* PocketCastTests */,
 			);
 		};
@@ -226,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB1169821FE2FC210033B4E1 /* styles_tint.css in Resources */,
 				CB54F1C51FE1A6A4006F6193 /* styles.css in Resources */,
 				C80F65D81ADE156C00277D77 /* Images.xcassets in Resources */,
 				C80F65DB1ADE156C00277D77 /* MainMenu.xib in Resources */,
@@ -266,7 +270,7 @@
 /* Begin PBXTargetDependency section */
 		C80F65E21ADE156C00277D77 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C80F65CF1ADE156C00277D77 /* PocketCasts */;
+			target = C80F65CF1ADE156C00277D77 /* Pocket Casts */;
 			targetProxy = C80F65E11ADE156C00277D77 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -322,7 +326,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -362,7 +365,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -372,6 +374,7 @@
 		C80F65EB1ADE156C00277D77 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_DISPLAY_SUFFIX = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
@@ -380,8 +383,9 @@
 				DEVELOPMENT_TEAM = W8K3X4JZU5;
 				INFOPLIST_FILE = PocketCast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nixon506e.PocketCasts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)$(APP_DISPLAY_SUFFIX)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PocketCast/PocketCast-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -392,6 +396,7 @@
 		C80F65EC1ADE156C00277D77 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_DISPLAY_SUFFIX = "";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
@@ -400,8 +405,9 @@
 				DEVELOPMENT_TEAM = W8K3X4JZU5;
 				INFOPLIST_FILE = PocketCast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nixon506e.PocketCasts;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME)$(APP_DISPLAY_SUFFIX)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PocketCast/PocketCast-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
@@ -448,6 +454,96 @@
 			};
 			name = Release;
 		};
+		CB11697E1FE2CBBD0033B4E1 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Beta;
+		};
+		CB11697F1FE2CBBD0033B4E1 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APP_DISPLAY_SUFFIX = " Beta";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = W8K3X4JZU5;
+				INFOPLIST_FILE = PocketCast/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) -D BETA";
+				PRODUCT_BUNDLE_IDENTIFIER = com.nixon506e.PocketCasts;
+				PRODUCT_NAME = "$(TARGET_NAME)$(APP_DISPLAY_SUFFIX)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "PocketCast/PocketCast-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Beta;
+		};
+		CB1169801FE2CBBD0033B4E1 /* Beta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = PocketCastTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mortenjust.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PocketCast.app/Contents/MacOS/PocketCast";
+			};
+			name = Beta;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -455,15 +551,17 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C80F65E81ADE156C00277D77 /* Debug */,
+				CB11697E1FE2CBBD0033B4E1 /* Beta */,
 				C80F65E91ADE156C00277D77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C80F65EA1ADE156C00277D77 /* Build configuration list for PBXNativeTarget "PocketCasts" */ = {
+		C80F65EA1ADE156C00277D77 /* Build configuration list for PBXNativeTarget "Pocket Casts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C80F65EB1ADE156C00277D77 /* Debug */,
+				CB11697F1FE2CBBD0033B4E1 /* Beta */,
 				C80F65EC1ADE156C00277D77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -473,6 +571,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C80F65EE1ADE156C00277D77 /* Debug */,
+				CB1169801FE2CBBD0033B4E1 /* Beta */,
 				C80F65EF1ADE156C00277D77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

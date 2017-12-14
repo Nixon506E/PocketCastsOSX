@@ -1,7 +1,7 @@
-.app.dark-theme {
-  color: #f4432c !important;
+.layout .layout-top .navigation, .content {
+    padding-top: 15px !important;
 }
 
-.player-controls button {
-  fill: #f4432c !important;
+.navigation .logo {
+    top: 35px !important;
 }

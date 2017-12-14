@@ -11,27 +11,26 @@ import Cocoa
 import WebKit
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, WebPolicyDelegate, WebResourceLoadDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, WKUIDelegate, WKNavigationDelegate {
 
-    @IBOutlet weak var webView: WebView!
+    @IBOutlet weak var webView: AppWebView!
     @IBOutlet weak var window: NSWindow!
-    @IBOutlet weak var reloadButton: NSButton!
     var loadedItems = 0
 
     var mediaKeyTap: SPMediaKeyTap?
 
     override init() {
         // Register defaults for the whitelist of apps that want to use media keys
-        UserDefaults.standard.register(
-            defaults: [kMediaKeyUsingBundleIdentifiersDefaultsKey : SPMediaKeyTap.defaultMediaKeyUserBundleIdentifiers()])
+        UserDefaults.standard.register(defaults: [kMediaKeyUsingBundleIdentifiersDefaultsKey : SPMediaKeyTap.defaultMediaKeyUserBundleIdentifiers()])
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         let window = NSApplication.shared().windows.first!
+        window.styleMask.insert(.fullSizeContentView)
         window.titlebarAppearsTransparent = true
-        window.title = ""
+        window.titleVisibility = .hidden
         window.isMovableByWindowBackground = true
-        window.backgroundColor = NSColor(red: 18.0/255.0, green: 18.0/255.0, blue: 19.0/255.0, alpha: 1.0) //NSColor(red: 244, green: 67, blue: 44, alpha: 1.0) //NSColor(red: CGFloat(0xf4)/CGFloat(0xff), green: CGFloat(0x43)/CGFloat(0xff), blue: CGFloat(0x36)/CGFloat(0xff), alpha: 1.0)
+        //window.backgroundColor = /*NSColor(red: 18.0/255.0, green: 18.0/255.0, blue: 19.0/255.0, alpha: 1.0) //NSColor(red: 244, green: 67, blue: 44, alpha: 1.0)*/ NSColor(red: CGFloat(0xf4)/CGFloat(0xff), green: CGFloat(0x43)/CGFloat(0xff), blue: CGFloat(0x36)/CGFloat(0xff), alpha: 1.0)
         
         let repFileName = "mainWindow"
         print("repfile: \(repFileName)")
@@ -41,16 +40,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, WebPolicyDelegate, WebResour
         window.windowController?.shouldCascadeWindows = false
         
         window.isReleasedWhenClosed = false
-
-        reloadButton.isHidden = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.gotNotification(_:)), name: NSNotification.Name(rawValue: "pocketEvent"), object: nil)
-
-        webView.mainFrameURL = "https://playbeta.pocketcasts.com/web/"
-        webView.policyDelegate = self
-        webView.resourceLoadDelegate = self
+        
+        var playURL = URL(string: "https://play.pocketcasts.com/web/")
+        #if BETA
+            playURL = URL(string: "https://playbeta.pocketcasts.com/web/")
+        #endif
+        let playRequest = URLRequest(url: playURL!)
+        webView.load(playRequest)
         webView.wantsLayer = true
-
+        
         mediaKeyTap = SPMediaKeyTap(delegate: self)
         if (SPMediaKeyTap.usesGlobalMediaKeyTap()) {
             mediaKeyTap!.startWatchingMediaKeys()
@@ -65,36 +65,40 @@ class AppDelegate: NSObject, NSApplicationDelegate, WebPolicyDelegate, WebResour
         webView.reload(sender)
     }
     
-    @IBAction func reloadButtonPressed(_ sender: Any) {
-        webView.reload(sender)
-    }
-    
 // MARK: - WebViewDelegate
     
-    func webView(_ webView: WebView!, decidePolicyForNewWindowAction actionInformation: [AnyHashable: Any]!, request: URLRequest!, newFrameName frameName: String!, decisionListener listener: WebPolicyDecisionListener!) {
-        NSWorkspace.shared().open(request.url!)
-    }
+    /*func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        NSWorkspace.shared().open(navigationAction.request.url!)
+    }*/
     
-    func webView(_: WebView!, resource: Any!, didFinishLoadingFrom: WebDataSource!) {
-        if let url = didFinishLoadingFrom.request.url, url.absoluteString == "https://playbeta.pocketcasts.com/web/podcasts/index#/podcasts" {
-            reloadButton.isHidden = false
-        }
-        
-        //insertCSSString(into: webView) // 1
+    func webView(_ myWebView: WKWebView, didFinish navigation: WKNavigation!) {
+        insertCSSString(into: webView) // 1
         // OR
         //insertContentsOfCSSFile(into: webView) // 2
     }
     
-    func insertCSSString(into webView: WebView) {
-        let cssString = ".app.dark-theme { color: #f4432c !important; } .player-controls button path { fill: #f4432c !important; } .seek-bar .tracks .knob-bar .knob { background-color: #f4432c !important; } .seek-bar .tracks .played-bar { background-color: white !important; } button.skip-forward-button.skip_forward_button { background-image: url(\"data:image/svg+xml;charset=utf-8,%3Csvg width='45' height='45' viewBox='0 0 45 45' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3Eplayer/skipforward%3C/title%3E%3Cpath d='M33 9H21.5C12.94 9 6 15.94 6 24.5 6 33.06 12.94 40 21.5 40 30.06 40 37 33.06 37 24.5a1 1 0 0 0-2 0C35 31.956 28.956 38 21.5 38S8 31.956 8 24.5 14.044 11 21.5 11H33v4l6-5-6-5v4z' fill='#f4432c' fill-rule='evenodd'/%3E%3C/svg%3E\"); } button.skip-back-button.skip_back_button { background-image: url(\"data:image/svg+xml;charset=utf-8,%3Csvg width='45' height='45' viewBox='0 0 45 45' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3Eplayer/skipback%3C/title%3E%3Cpath d='M12 9h11.5C32.06 9 39 15.94 39 24.5 39 33.06 32.06 40 23.5 40 14.94 40 8 33.06 8 24.5a1 1 0 0 1 2 0C10 31.956 16.044 38 23.5 38S37 31.956 37 24.5 30.956 11 23.5 11H12v4l-6-5 6-5v4z' fill='#f4432c' fill-rule='evenodd'/%3E%3C/svg%3E\"); } .skip-back-button p { color: #f4432c !important; } .skip-forward-button p { color: #f4432c !important; }"
-        let jsString = "var style = document.createElement('style'); style.innerHTML = '\(cssString)'; document.head.appendChild(style);"
-        webView.stringByEvaluatingJavaScript(from: jsString)
+    func insertCSSString(into webView: WKWebView) {
+        if let filepath = Bundle.main.path(forResource: "styles", ofType: "css") {
+            do {
+                let cssString = try String(contentsOfFile: filepath)
+                let minifiedString = String(cssString.filter { !"\n\t\r".contains($0) }).replacingOccurrences(of: "\'", with: "\\'")
+                print(minifiedString)
+                let jsString = "var style = document.createElement('style'); style.innerHTML = '\(minifiedString)'; document.head.appendChild(style);"
+                webView.evaluateJavaScript(jsString, completionHandler: { (_, error) in
+                    if let error = error { print(error.localizedDescription as Any) }
+                })
+            } catch {
+                // contents could not be loaded
+            }
+        }
     }
     
-    func insertContentsOfCSSFile(into webView: WebView) {
+    func insertContentsOfCSSFile(into webView: WKWebView) {
         guard let path = Bundle.main.path(forResource: "styles", ofType: "css") else { return }
-        let javaScriptStr = "var link = document.createElement('link'); link.href = '\(path)'; link.rel = 'stylesheet'; document.head.appendChild(link)"
-        webView.stringByEvaluatingJavaScript(from: javaScriptStr)
+        let jsString = "var link = document.createElement('link'); link.href = '\(path)'; link.rel = 'stylesheet'; document.head.appendChild(link)"
+        webView.evaluateJavaScript(jsString, completionHandler: { (_, error) in
+            if let error = error { print(error.localizedDescription as Any) }
+        })
     }
     
 // MARK: - AppDelegate
@@ -113,24 +117,52 @@ class AppDelegate: NSObject, NSApplicationDelegate, WebPolicyDelegate, WebResour
 		if let userInfo = notification.userInfo as? Dictionary<String,String> {
 			if let action = userInfo["action"] {
 				print("Got Notification \(action)")
-				let angularMediaPlayerSelector = "angular.element(document).injector().get('mediaPlayer')"
 				
-				switch(action) {
-					case "playPause":
-						webView.stringByEvaluatingJavaScript(
-							from: "\(angularMediaPlayerSelector).playPause()")
-					
-					case "skipForward":
-						webView.stringByEvaluatingJavaScript(
-							from: "\(angularMediaPlayerSelector).jumpForward()")
-					
-					case "skipBack":
-						webView.stringByEvaluatingJavaScript(
-							from: "\(angularMediaPlayerSelector).jumpBack()")
-					
-					default:
-						break
-				}
+                #if BETA
+                    let mediaPlayerSelector = "document.getElementsByTagName('audio')[0]"
+                    
+                    switch(action) {
+                        case "playPause":
+                            webView.evaluateJavaScript("\(mediaPlayerSelector).paused ? \(mediaPlayerSelector).play() : \(mediaPlayerSelector).pause()", completionHandler: { (_, error) in
+                                if let error = error { print(error.localizedDescription as Any) }
+                            })
+                        
+                        case "skipForward":
+                            webView.evaluateJavaScript("\(mediaPlayerSelector).currentTime += 30.0", completionHandler: { (_, error) in
+                                    if let error = error { print(error.localizedDescription as Any) }
+                            })
+                        
+                        case "skipBack":
+                            webView.evaluateJavaScript("\(mediaPlayerSelector).currentTime -= 15.0", completionHandler: { (_, error) in
+                                    if let error = error { print(error.localizedDescription as Any) }
+                            })
+                        
+                        default:
+                            break
+                    }
+                #else
+                    let angularMediaPlayerSelector = "angular.element(document).injector().get('mediaPlayer')"
+
+                    switch(action) {
+                    case "playPause":
+                        webView.evaluateJavaScript("\(angularMediaPlayerSelector).playPause()", completionHandler: { (_, error) in
+                            if let error = error { print(error.localizedDescription as Any) }
+                        })
+                        
+                    case "skipForward":
+                        webView.evaluateJavaScript("\(angularMediaPlayerSelector).jumpForward()", completionHandler: { (_, error) in
+                            if let error = error { print(error.localizedDescription as Any) }
+                        })
+                        
+                    case "skipBack":
+                        webView.evaluateJavaScript("\(angularMediaPlayerSelector).jumpBack()", completionHandler: { (_, error) in
+                            if let error = error { print(error.localizedDescription as Any) }
+                        })
+                        
+                    default:
+                        break
+                    }
+                #endif
 			}
 		}
     }
@@ -175,5 +207,41 @@ class AppDelegate: NSObject, NSApplicationDelegate, WebPolicyDelegate, WebResour
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
+}
 
+class AppWebView: WKWebView {
+    // Allow the window to still be dragged from this button
+    override func mouseDown(with mouseDownEvent: NSEvent) {
+        let window = self.window!
+        let startingPoint = mouseDownEvent.locationInWindow
+        
+        // Track events until the mouse is up (in which we interpret as a click), or a drag starts (in which we pass off to the Window Server to perform the drag)
+        var shouldCallSuper = false
+        
+        // trackEvents won't return until after the tracking all ends
+        window.trackEvents(matching: [.leftMouseDragged, .leftMouseUp], timeout:NSEventDurationForever, mode: .defaultRunLoopMode) { event, stop in
+            switch event.type {
+            case .leftMouseUp:
+                // Stop on a mouse up; post it back into the queue and call super so it can handle it
+                shouldCallSuper = true
+                NSApp.postEvent(event, atStart: false)
+                stop.pointee = true
+                
+            case .leftMouseDragged:
+                // track mouse drags, and if more than a few points are moved we start a drag
+                let currentPoint = event.locationInWindow
+                if (fabs(currentPoint.x - startingPoint.x) >= 5 || fabs(currentPoint.y - startingPoint.y) >= 5) {
+                    stop.pointee = true
+                    window.performDrag(with: event)
+                }
+                
+            default:
+                break
+            }
+        }
+        
+        if (shouldCallSuper) {
+            super.mouseDown(with: mouseDownEvent)
+        }
+    }
 }

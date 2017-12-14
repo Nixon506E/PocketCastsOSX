@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="11542"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,10 +14,9 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="MyApplication"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="PocketCast" customModuleProvider="target">
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Pocket_Casts" customModuleProvider="target">
             <connections>
-                <outlet property="reloadButton" destination="5HL-V5-AyF" id="Tcb-tr-9wU"/>
-                <outlet property="webView" destination="6mA-qh-89b" id="flv-mh-EGv"/>
+                <outlet property="webView" destination="7Lz-jS-Nz7" id="lvx-V7-EUm"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -366,45 +366,39 @@
                 </menuItem>
             </items>
         </menu>
-        <window title="PocketCast" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <window title="PocketCast" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="254" y="148" width="980" height="540"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <value key="minSize" type="size" width="980" height="540"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="980" height="540"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <webView translatesAutoresizingMaskIntoConstraints="NO" id="6mA-qh-89b">
+                    <wkWebView wantsLayer="YES" allowsBackForwardNavigationGestures="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Lz-jS-Nz7" customClass="AppWebView" customModule="Pocket_Casts" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="980" height="540"/>
-                        <webPreferences key="preferences" defaultFontSize="12" defaultFixedFontSize="12">
-                            <nil key="identifier"/>
-                        </webPreferences>
+                        <wkWebViewConfiguration key="configuration">
+                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" audio="YES"/>
+                            <wkPreferences key="preferences"/>
+                        </wkWebViewConfiguration>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
-                                <color key="value" red="0.96522635221481323" green="0.42303839325904846" blue="0.36406642198562622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.96522635219999997" green="0.42303839329999998" blue="0.364066422" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
-                    </webView>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5HL-V5-AyF">
-                        <rect key="frame" x="110" y="484" width="40" height="40"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="reload" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="FSQ-a3-eG7">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
                         <connections>
-                            <action selector="reloadButtonPressed:" target="Voe-Tx-rLC" id="s5Z-Ww-32M"/>
+                            <outlet property="UIDelegate" destination="Voe-Tx-rLC" id="8QV-Eb-VU4"/>
+                            <outlet property="navigationDelegate" destination="Voe-Tx-rLC" id="7Tu-pU-viG"/>
                         </connections>
-                    </button>
+                    </wkWebView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="6mA-qh-89b" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="CAe-cX-jYI"/>
-                    <constraint firstAttribute="bottom" secondItem="6mA-qh-89b" secondAttribute="bottom" id="G08-ul-oQB"/>
-                    <constraint firstItem="6mA-qh-89b" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="Sg0-uK-Smg"/>
-                    <constraint firstAttribute="trailing" secondItem="6mA-qh-89b" secondAttribute="trailing" id="WSd-pH-YfU"/>
+                    <constraint firstItem="7Lz-jS-Nz7" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="3O9-eN-05d"/>
+                    <constraint firstAttribute="trailing" secondItem="7Lz-jS-Nz7" secondAttribute="trailing" id="FWp-Em-HcA"/>
+                    <constraint firstAttribute="bottom" secondItem="7Lz-jS-Nz7" secondAttribute="bottom" id="tvP-rv-yG0"/>
+                    <constraint firstItem="7Lz-jS-Nz7" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="zMD-hZ-egd"/>
                 </constraints>
             </view>
             <userDefinedRuntimeAttributes>
@@ -414,7 +408,4 @@
             </userDefinedRuntimeAttributes>
         </window>
     </objects>
-    <resources>
-        <image name="reload" width="512" height="512"/>
-    </resources>
 </document>
